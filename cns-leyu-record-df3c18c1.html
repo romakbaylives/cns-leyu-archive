@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>leyu · 再识之页</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(145deg, #fbe9d2 0%, #f5d6b3 45%, #efc9a6 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 1.25rem;
+        }
+
+        .card {
+            max-width: 820px;
+            width: 100%;
+            background: rgba(255, 249, 240, 0.9);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            border-radius: 48px 24px 48px 24px;
+            padding: 3rem 2.8rem;
+            box-shadow: 0 16px 40px -8px rgba(170, 110, 60, 0.2), 0 8px 16px -4px rgba(120, 70, 30, 0.08);
+            transition: border-radius 0.25s ease;
+        }
+
+        h1 {
+            font-size: 2.6rem;
+            font-weight: 550;
+            letter-spacing: -0.01em;
+            color: #4d2e1b;
+            margin-bottom: 0.5rem;
+            line-height: 1.2;
+            display: flex;
+            align-items: baseline;
+            gap: 0.4rem;
+        }
+
+        .subhead {
+            font-size: 1.1rem;
+            font-weight: 400;
+            color: #7b5a41;
+            margin-bottom: 2.2rem;
+            border-left: 4px solid #c9956b;
+            padding-left: 1.2rem;
+        }
+
+        .intro {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: #3a2a1e;
+            margin-bottom: 2.5rem;
+        }
+
+        .intro a {
+            color: #a5612b;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px dashed #c9956b;
+            transition: border 0.2s;
+        }
+
+        .intro a:hover {
+            border-bottom: 1.5px solid #8f4f1f;
+        }
+
+        .highlights {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.2rem 0.9rem;
+            margin-bottom: 2.8rem;
+        }
+
+        .highlight-item {
+            background: #fdf1e6;
+            padding: 0.8rem 1.4rem 0.8rem 2rem;
+            border-radius: 40px 12px 12px 40px;
+            font-size: 0.95rem;
+            color: #3d2b1b;
+            border-left: 5px solid #dfac81;
+            box-shadow: 0 2px 6px rgba(160, 100, 50, 0.06);
+            flex: 1 0 180px;
+        }
+
+        .highlight-item b {
+            font-weight: 550;
+            color: #754c2c;
+        }
+
+        .usage-note {
+            background: #fff6eb;
+            border-radius: 24px;
+            padding: 1.6rem 2rem;
+            margin: 2.2rem 0 2.6rem;
+            border: 1px solid #edd9c6;
+            box-shadow: 0 6px 12px -6px rgba(140, 80, 35, 0.08);
+        }
+
+        .usage-note p {
+            color: #3f2d1d;
+            line-height: 1.65;
+            margin-bottom: 0.75rem;
+        }
+
+        .usage-note p:last-child {
+            margin-bottom: 0;
+        }
+
+        .faq-mini {
+            display: grid;
+            gap: 1.1rem;
+            margin-bottom: 2.6rem;
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .faq-item {
+            background: #fdf4ea;
+            border-radius: 20px;
+            padding: 1.1rem 1.4rem;
+            border: 1px solid #e7cfbb;
+            transition: background 0.2s;
+        }
+
+        .faq-item:hover {
+            background: #fbefe2;
+        }
+
+        .faq-q {
+            font-weight: 550;
+            color: #5b3a26;
+            margin-bottom: 0.2rem;
+            font-size: 0.96rem;
+        }
+
+        .faq-a {
+            font-size: 0.92rem;
+            color: #5b4534;
+            line-height: 1.5;
+        }
+
+        .cta-line {
+            font-size: 1.02rem;
+            color: #3f2c1e;
+            border-top: 1px solid #e5cfbb;
+            padding-top: 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 0.8rem;
+        }
+
+        .cta-line a {
+            display: inline-block;
+            background: #c68b5b;
+            color: #fcf3ea;
+            padding: 0.5rem 1.6rem;
+            border-radius: 60px;
+            text-decoration: none;
+            font-weight: 480;
+            letter-spacing: 0.02em;
+            box-shadow: 0 4px 10px -2px rgba(140, 70, 30, 0.2);
+            transition: background 0.2s, box-shadow 0.2s;
+            font-size: 1.1rem;
+        }
+
+        .cta-line a:hover {
+            background: #b27546;
+            box-shadow: 0 6px 14px -2px rgba(130, 65, 25, 0.25);
+        }
+
+        .aside-tip {
+            font-size: 0.88rem;
+            color: #7b5e47;
+            opacity: 0.8;
+        }
+
+        @media (max-width: 640px) {
+            .card {
+                padding: 2rem 1.5rem;
+                border-radius: 32px 16px 32px 16px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .subhead {
+                font-size: 0.95rem;
+                padding-left: 0.8rem;
+            }
+
+            .highlights {
+                flex-direction: column;
+                gap: 0.7rem;
+            }
+
+            .highlight-item {
+                flex: 1 1 auto;
+                padding: 0.7rem 1.2rem 0.7rem 1.6rem;
+            }
+
+            .faq-mini {
+                grid-template-columns: 1fr;
+                gap: 0.8rem;
+            }
+
+            .usage-note {
+                padding: 1.2rem 1.2rem;
+            }
+
+            .cta-line {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.8rem;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .card {
+                padding: 1.5rem 1rem;
+            }
+
+            h1 {
+                font-size: 1.7rem;
+            }
+
+            .cta-line a {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>
+            <span>leyu</span>
+            <span style="font-size: 1.1rem; font-weight: 350; color: #9b7a61;">· 再识 ·</span>
+        </h1>
+        <div class="subhead">
+            一段温和的重新遇见，一份安静的持续关注
+        </div>
+
+        <div class="intro">
+            <p>有些地方，去了第一次之后，总会想着第二次。也许是界面里某个配色让人安心，也许是交互节奏刚好合拍。<a href="https://cns--leyu.com">leyu</a> 就是这样一个——你或许已经留意过它，但这一次，我们想从更日常的角度聊聊它：它适合什么场景，哪些细节值得留心，又为什么值得你把它放在收藏夹里。</p>
+        </div>
+
+        <div class="highlights">
+            <div class="highlight-item"><b>轻量但不单薄</b> · 页面干净，功能聚焦，不堆砌</div>
+            <div class="highlight-item"><b>视觉舒适区</b> · 暖调基底，低饱和用色，久看不累</div>
+            <div class="highlight-item"><b>常看常新</b> · 内容节奏克制，适合隔段时间回来看一眼</div>
+            <div class="highlight-item"><b>顺手收藏</b> · 没有弹窗干扰，适合加入书签持续留意</div>
+        </div>
+
+        <div class="usage-note">
+            <p><strong>使用建议 · 一种自然的节奏</strong></p>
+            <p>如果你只是偶尔想起，不妨把它当作一个安静的角落。不必每日刷新，而是当你需要从信息洪流中短暂抽身时，再打开它。把 <a href="https://cns--leyu.com" style="color: #a5612b; text-decoration: underline; text-underline-offset: 3px; text-decoration-style: dotted; font-weight: 500;">leyu</a> 添加到浏览器书签栏，或者整理进一个叫“稍后细看”的文件夹——它会一直在那儿，不吵不闹。</p>
+            <p>假如你是第一次听说它，建议先简单浏览一两个版块，感受它的语气和结构。第二次来的时候，往往会有不同的体会。</p>
+        </div>
+
+        <div class="faq-mini">
+            <div class="faq-item">
+                <div class="faq-q">▸ leyu 适合谁来用？</div>
+                <div class="faq-a">偏好安静浏览、不喜欢强推送的人。也适合想要一个干净页面偶尔回来看看的读者。</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">▸ 需要注册或登录吗？</div>
+                <div class="faq-a">不需要。直接打开即可浏览所有内容，无需留下任何信息。</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">▸ 内容多久更新一次？</div>
+                <div class="faq-a">没有固定周期，但每次变化都自然、不突兀。正因如此，才值得隔段时间回访。</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">▸ 为什么值得收藏？</div>
+                <div class="faq-a">因为不打扰，却始终在线。收藏它就像在窗台放一盆绿植——不必天天浇水，但每次看见都觉得舒服。</div>
+            </div>
+        </div>
+
+        <div class="cta-line">
+            <span>
+                把 <a href="https://cns--leyu.com">leyu</a> 放回你的视野，慢慢来
+            </span>
+            <span class="aside-tip">—— 非必要，不打扰</span>
+        </div>
+    </div>
+</body>
+</html>
